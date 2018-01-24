@@ -11,3 +11,4 @@ SQLAlchemy==1.2.0
 validate-email==1.3
 Werkzeug==0.13
 WTForms==2.1
+gunicorn==19.7.1
