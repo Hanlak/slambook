@@ -1,0 +1,96 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+changeMail
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<style>
+  body{
+    background-color:#fff3e0;
+  }
+  .row > div {
+    padding: 20px;
+    outline: 2px solid #ccc;
+    outline-offset: -10px;
+    -moz-outline-radius: 10px;
+    -webkit-outline-radius: 10px;
+ }
+ 
+</style>
+{% endblock %}
+
+
+{% block navbar %}
+<nav class="navbar navbar-default" style="background-color:#1d4e89" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" style = "color:white;font-size:39px" href="{{ url_for('index') }} ">SlamBook</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!--
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    -->
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" style="color:white;font-size:20px" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>{{ name }} <b class="caret"></b></a>
+          <ul style = "color:blue" class="dropdown-menu">
+            <li><h4 style="margin-left: 15px"><b>No of Slams:<span style="color: red">{{ count }} </span> </b></h4></li>
+            <li><a href=" # " style="color: blue">Thinking..</a></li>
+            <li><a href="#"style="color: blue">No idea</a></li>
+            <li class="divider"></li>
+            <li><a href=" {{ url_for('logout') }} " style="color: blue">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+	{% if msg %}
+	 <h3 style="color: red;text-align: center"> {{ msg }} </h3>
+	{% endif %}
+	{% if Anmsg %}
+	 <h3 style="color: red;text-align: center"> {{ Anmsg }} </h3>
+	{% endif %}
+	<h2  style = "color:#1d4e89;" > <strong>Change Mail</strong></h2>
+	<br>
+		<div class="form-group">
+		  <form action="{{ url_for('Changemail')}}" method="post">
+			{{ form.hidden_tag()}}
+            <div class="form-group">
+            {{wtf.form_field(form.oldmail)}}
+            {{wtf.form_field(form.newmail)}}       
+             <br>
+             <input type="submit"  class = "btn btn-lg btn-primary" value="ChangeMail">
+        </div>
+        </form>
+    </div>
+    <div class="text-center">
+      <h3 style = "color:#1d4e89;"><a href = "{{ url_for('index') }}" style="text-decoration: none"><b>click here to go home</b></a></h3>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

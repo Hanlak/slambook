@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="background-image: url('first.jpg');">
+
+      <form class="form-signin" method="POST" action='/login'>
+        <h2 class="form-signin-heading">Please sign in</h2>
+        {% if err %}
+            <h4 style = 'color:red'> {{ err }} </h4>
+        {% endif %}
+        {{form.hidden_tag()}}
+        {{wtf.form_field(form.username)}}
+        <h5 style="color: red"><a href ="{{ url_for('forgotpass') }}" style="text-decoration: none;color: #1d4e89">Forgot Password?</a></h5>
+        {{wtf.form_field(form.password)}}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <h4 style="color:red">Dont have an account?<a style="text-decoration: None;display: inline-block;" href = "{{ url_for('signup') }}">Signup</a></h4>
+        </form>
+             
+    </div> 
+{% endblock %}

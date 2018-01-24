@@ -1,0 +1,54 @@
+{% from "_render_field.html" import render_field, render_radio_fields %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Slam Book</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+      body{
+        background-color: #1d4e89;
+      }
+      legend{
+        font-size: 35px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container" style ="background-color: #1d4e89">
+
+        <div class="row">
+          <div class="col-lg-12">
+              <form , method="POST" action="{{ url_for('slambook') }}">
+                {{ form.csrf_token }}
+                <fieldset>
+                  <legend><strong>Slam Book</strong></legend>
+                  {{ render_field(form.urname, placeholder=form.urname.label.text) }}
+                  {{ render_field(form.Myname, placeholder=form.Myname.label.text) }}
+                  {{ render_field(form.Mymail, placeholder=form.Mymail.label.text) }}
+                  {{ render_field(form.Birthday)}}
+                  {{ render_field(form.Memmom , placeholder = form.Memmom.label.text) }}
+                  {{ render_field(form.Likes , placeholder = form.Likes.label.text) }}
+                  {{ render_field(form.Dontlikes , placeholder = form.Dontlikes.label.text) }}
+                  {{ render_field(form.Aboutme, placeholder = form.Aboutme.label.text) }}
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="reset" class="btn btn-default">Cancel</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </fieldset>
+              </form>
+          </div>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>

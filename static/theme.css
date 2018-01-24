@@ -1,0 +1,13 @@
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+  background-color: #fff3e0;
+}
+
+.theme-showcase > p > .btn {
+  margin: 50px 0;
+}
+
+.theme-showcase .container {
+  width: auto;
+}

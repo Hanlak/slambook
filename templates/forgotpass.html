@@ -1,0 +1,39 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+changepassword
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<style>
+  body{
+    background-color:#fff3e0;
+  }</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<br>
+	<br>
+	{% if msg %}
+            <h5 style = 'color:red'> {{ msg }} </h5>
+    {% endif %}
+    {% if Anmsg %}
+            <h5 style = 'color:red'> {{ Anmsg }} </h5>
+    {% endif %}
+	<h2 style="color:#1d4e89">Forgot Password?</h2>
+	<br>
+	<div class="form-group">
+		<form action="{{ url_for('forgotpass') }}" method = 'post'>
+			{{ form.hidden_tag()}}
+			{{ wtf.form_field(form.username) }}
+			<input type="submit" value="send Mail">
+		</form>
+	</div>
+
+	
+</div>
+
+{% endblock %}
