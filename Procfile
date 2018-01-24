@@ -1,1 +1,1 @@
-web: gunicorn justslam: app
+web: gunicorn app: app
